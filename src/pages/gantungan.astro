@@ -1,0 +1,6 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { ProductCatalog } from '@/components/catalog/ProductCatalog';
+import { GANTUNGAN_LIST } from '@/data/mestFioreData';
+---
+<BaseLayout title="Gantungan Custom Jatinangor | Mestiere Fiolet" description="Pilih gantungan handmade custom Mestiere Fiolet untuk tas, kunci, dan hadiah kecil."><ProductCatalog client:load items={GANTUNGAN_LIST} heading="Charm kecil, mood besar." intro="Teman baru untuk totebag, tas kuliah, atau kunci kos. Pilih modelnya, lalu tulis warna yang paling kamu suka saat pesan." actionLabel="Pesan gantungan" /></BaseLayout>

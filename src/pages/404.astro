@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { PipeCleanerArt } from '@/components/art/PipeCleanerArt';
+---
+
+<BaseLayout
+  title="Halaman tidak ditemukan | Mestiere Fiolet"
+  description="Halaman yang kamu cari tidak tersedia. Lanjut lihat koleksi buket dan gantungan Mestiere Fiolet."
+>
+  <section class="page-hero min-h-[60vh] flex items-center" aria-labelledby="not-found-heading">
+    <div class="shell py-12">
+      <div class="max-w-xl">
+        <div class="w-20 h-20 mb-6 rounded-2xl bg-purple-50 flex items-center justify-center border border-purple-100 overflow-hidden" aria-hidden="true">
+          <PipeCleanerArt id="bunga-holow-love" size={60} />
+        </div>
+        <h1 id="not-found-heading">Halaman ini belum ada.</h1>
+        <p class="mt-4 text-muted text-lg leading-relaxed">
+          Mungkin tautannya berubah atau salah ketik. Kamu bisa lanjut melihat katalog buket, gantungan gemas, atau langsung mulai merangkai pesanan.
+        </p>
+        <div class="hero-actions mt-8">
+          <a class="button" href="/buket/">
+            Lihat katalog buket <span aria-hidden="true">→</span>
+          </a>
+          <a class="button button-secondary" href="/">
+            Kembali ke beranda
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,121 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { PipeCleanerArt } from '@/components/art/PipeCleanerArt';
+import { BUCKET_LIST, GANTUNGAN_LIST } from '@/data/mestFioreData';
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'Mestiere Fiolet',
+        url: 'https://mestierefiolet.com',
+        areaServed: 'Jatinangor, Sumedang',
+        sameAs: ['https://instagram.com/mest.fiore'],
+      })}
+    />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <h1 id="hero-title">Hadiah kecil, dibikin lebih personal.</h1>
+        <p>
+          Buket kawat bulu dan charm handmade untuk sempro, wisuda, ulang tahun, atau sekadar bilang “aku inget kamu”. Pilih yang kamu suka, sisanya kita bantu rangkai.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="/rangkai/">
+            Rangkai pesanan <span aria-hidden="true">→</span>
+          </a>
+          <a class="button button-secondary" href="/buket/">
+            Lihat buket
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Ilustrasi buket bunga kawat bulu Mestiere Fiolet">
+        <PipeCleanerArt id="bucket-flower" size={320} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Overview Price Tiers -->
+  <section class="home-section" aria-labelledby="section-pricing-title">
+    <div class="shell section-split">
+      <div class="section-copy">
+        <h2 id="section-pricing-title">Yang kamu suka, kami bantu wujudkan.</h2>
+        <p>
+          Pilih paket jadi untuk yang praktis, atau racik bunga satuan kalau kamu sudah punya kombinasi warna sendiri. Harga terlihat dari awal, request bisa ditulis saat pesan.
+        </p>
+      </div>
+      <ul class="plain-list">
+        <li>
+          <span>Paket buket handmade</span>
+          <strong>mulai 10K</strong>
+        </li>
+        <li>
+          <span>Gantungan untuk tas dan kunci</span>
+          <strong>mulai 3K</strong>
+        </li>
+        <li>
+          <span>Bunga satuan untuk dirangkai</span>
+          <strong>mulai 1K</strong>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 2: Choose Path (Editorial Cards) -->
+  <section class="home-section section-soft" aria-labelledby="section-paths-title">
+    <div class="shell">
+      <div>
+        <h2 id="section-paths-title">Pilih jalur yang paling kamu butuhkan.</h2>
+        <p class="muted intro-muted">
+          Tidak perlu scroll panjang untuk cari informasi penting. Masuk ke kategori, lihat harga, lalu lanjut chat saat sudah cocok.
+        </p>
+      </div>
+      <div class="home-steps">
+        <div class="home-step">
+          <h3>Buket untuk momen spesial</h3>
+          <p>{BUCKET_LIST.length} paket pilihan yang bisa disesuaikan warna dan detailnya.</p>
+          <a class="text-link" href="/buket/">
+            Pilih buket <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="home-step">
+          <h3>Charm untuk bawa ke mana-mana</h3>
+          <p>{GANTUNGAN_LIST.length} model gantungan lucu yang playful dan tetap rapi.</p>
+          <a class="text-link" href="/gantungan/">
+            Lihat gantungan <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="home-step">
+          <h3>Sudah punya ide?</h3>
+          <p>Susun estimasi dan kirim detailnya ke admin dengan satu klik.</p>
+          <a class="text-link" href="/rangkai/">
+            Mulai merangkai <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Custom Request Callout -->
+  <section class="home-section" aria-labelledby="section-callout-title">
+    <div class="shell">
+      <div class="callout">
+        <h2 id="section-callout-title">Mau warna yang tidak ada di katalog?</h2>
+        <p>
+          Boleh banget. Tulis warna bunga, wrap, atau detail kecil yang kamu mau. Admin akan cek kemungkinan dan harga finalnya lewat WhatsApp.
+        </p>
+        <a class="button" href="/rangkai/">
+          Tulis request pesanan <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

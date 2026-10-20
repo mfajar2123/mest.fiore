@@ -1,0 +1,7 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { OrderStudio } from '@/components/order/OrderStudio';
+---
+<BaseLayout title="Rangkai Pesanan | Mestiere Fiolet" description="Hitung estimasi buket, bunga satuan, dan gantungan custom Mestiere Fiolet lalu kirim ke WhatsApp.">
+  <section class="order-page"><div class="shell"><h1>Rangkai sesuai budget dan mood kamu.</h1><p>Pilih paket, bunga satuan, atau gantungan. Kamu bebas gabungkan pilihan; admin akan mengonfirmasi stok dan harga final lewat WhatsApp.</p><div class="order-shell"><OrderStudio client:load /></div></div></section>
+</BaseLayout>

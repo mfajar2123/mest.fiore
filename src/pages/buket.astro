@@ -1,0 +1,6 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { ProductCatalog } from '@/components/catalog/ProductCatalog';
+import { BUCKET_LIST } from '@/data/mestFioreData';
+---
+<BaseLayout title="Buket Custom Jatinangor | Mestiere Fiolet" description="Pilih buket handmade Mestiere Fiolet untuk sempro, wisuda, dan hadiah di Jatinangor."><ProductCatalog client:load items={BUCKET_LIST} heading="Buket yang ikut merayakan momenmu." intro="Dari satu tangkai yang manis sampai buket foto untuk orang favorit. Pilih paketnya dulu, detail warna dan pesan bisa kamu lanjutkan di WhatsApp." actionLabel="Rangkai pesanan" /></BaseLayout>

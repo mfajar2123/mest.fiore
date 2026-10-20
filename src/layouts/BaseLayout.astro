@@ -1,0 +1,39 @@
+---
+import '@/styles/global.css';
+import SiteHeader from '@/components/layout/SiteHeader.astro';
+import SiteFooter from '@/components/layout/SiteFooter.astro';
+
+interface Props { title?: string; description?: string; canonical?: string; }
+const {
+  title = 'Mestiere Fiolet | Buket & Charm Custom Jatinangor',
+  description = 'Buket bunga kawat bulu dan gantungan custom di Jatinangor. Pilih warna, susun pesanan, lalu chat admin Mestiere Fiolet di WhatsApp.',
+  canonical = Astro.url.pathname,
+} = Astro.props;
+const siteUrl = new URL(canonical, Astro.site);
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={siteUrl} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={new URL('/og-share.svg', Astro.site)} />
+    <meta name="theme-color" content="#63458B" />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Lewati navigasi</a>
+    <SiteHeader />
+    <main id="main-content"><slot /></main>
+    <SiteFooter />
+  </body>
+</html>

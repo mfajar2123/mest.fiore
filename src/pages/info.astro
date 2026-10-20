@@ -1,0 +1,95 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { BRAND_INFO, FAQ_ITEMS, COD_LOCATIONS } from '@/data/mestFioreData';
+---
+
+<BaseLayout
+  title="Info Pesanan & COD Jatinangor | Mestiere Fiolet"
+  description="FAQ, panduan cara pesan, dan area COD Mestiere Fiolet di Jatinangor (Unpad, ITB, Jatos)."
+>
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: FAQ_ITEMS.map(({ question, answer }) => ({
+          '@type': 'Question',
+          name: question,
+          acceptedAnswer: { '@type': 'Answer', text: answer },
+        })),
+      })}
+    />
+  </Fragment>
+
+  <section class="page-hero" aria-labelledby="info-hero-heading">
+    <div class="shell">
+      <h1 id="info-hero-heading">Info yang perlu kamu tahu sebelum pesan.</h1>
+      <p>
+        Semua detail utama dibuat singkat supaya kamu bisa lanjut pilih tanpa menebak-nebak.
+      </p>
+    </div>
+  </section>
+
+  <section class="shell info-layout" aria-labelledby="faq-section-heading">
+    <div class="info-facts">
+      <div>
+        <strong>Waktu Operasional</strong>
+        <span>{BRAND_INFO.operationalHours}</span>
+      </div>
+      <div>
+        <strong>Area Layanan & COD</strong>
+        <span>{BRAND_INFO.location}</span>
+      </div>
+      <div>
+        <strong>Titik COD Favorit</strong>
+        <span class="block mt-1 text-sm text-muted-foreground">
+          {COD_LOCATIONS.slice(0, 4).join(' · ')}
+        </span>
+      </div>
+      <div>
+        <strong>Kontak Langsung</strong>
+        <a
+          class="text-link"
+          href={`https://wa.me/${BRAND_INFO.whatsappNumber}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Chat WhatsApp Admin <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div>
+        <strong>Update Katalog & Foto</strong>
+        <a
+          class="text-link"
+          href={BRAND_INFO.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {BRAND_INFO.handle} di Instagram <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h2 id="faq-section-heading">Yang sering ditanyakan.</h2>
+      <ul class="faq-list">
+        {FAQ_ITEMS.map((faq) => (
+          <li>
+            <details>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="privacy" id="privasi">
+      <h2>Privasi pesanan & foto kustom</h2>
+      <p>
+        Situs ini adalah web katalog murni dan tidak menyimpan nama, foto, atau catatan request di server mana pun. Jika kamu memesan Idol Bucket atau request khusus, foto dikirim langsung ke WhatsApp admin secara privat. Kirim hanya foto yang kamu punya izin untuk membagikannya.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

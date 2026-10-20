@@ -1,0 +1,50 @@
+---
+import { BRAND_INFO } from '@/data/mestFioreData';
+---
+
+<footer class="site-footer" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Informasi Mestiere Fiolet</h2>
+  <div class="shell footer-grid">
+    <div>
+      <a class="footer-brand" href="/" aria-label="Mestiere Fiolet, beranda">
+        Mest <span>Fiolet</span>
+      </a>
+      <p class="footer-copy">
+        Buket bunga kawat bulu & charm handmade untuk momen kecil yang ingin dibuat lebih berkesan. Bebas custom warna & foto.
+      </p>
+      <a
+        class="text-link text-sm font-semibold"
+        href={BRAND_INFO.instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {BRAND_INFO.handle} di Instagram <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div>
+      <p class="footer-label">Lokasi & Operasional</p>
+      <p class="text-sm font-medium text-ink mb-1">{BRAND_INFO.location}</p>
+      <p class="muted text-sm">{BRAND_INFO.operationalHours}</p>
+      <p class="text-xs text-muted mt-2">COD Area Unpad, ITB, Jatos, Ciseke, Cikuda</p>
+    </div>
+
+    <div>
+      <p class="footer-label">Siap pesan?</p>
+      <p class="text-sm text-muted mb-3">Susun estimasi budget dan langsung chat admin.</p>
+      <a class="button button-small" href="/rangkai/">
+        Rangkai pesanan <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="shell footer-bottom">
+    <span>© {new Date().getFullYear()} Mestiere Fiolet · Jatinangor, Sumedang. All rights reserved.</span>
+    <div class="flex items-center gap-5">
+      <a href="/info/#privasi" class="hover:text-plum transition-colors">Privasi pesanan</a>
+      <a href={`https://wa.me/${BRAND_INFO.whatsappNumber}`} target="_blank" rel="noopener noreferrer" class="hover:text-plum transition-colors">
+        WhatsApp Admin
+      </a>
+    </div>
+  </div>
+</footer>

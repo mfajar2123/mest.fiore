@@ -1,0 +1,87 @@
+---
+import MestLogo from '@/components/brand/MestLogo.astro';
+const path = Astro.url.pathname;
+const links = [
+  { href: '/buket/', label: 'Buket' },
+  { href: '/gantungan/', label: 'Gantungan' },
+  { href: '/rangkai/', label: 'Rangkai' },
+  { href: '/info/', label: 'Info' },
+];
+---
+
+<header class="site-header">
+  <div class="shell nav-shell">
+    <a class="brand-lockup" href="/" aria-label="Mestiere Fiolet, beranda">
+      <MestLogo size="sm" showCircle={true} className="brand-mark" />
+      <span>
+        <b>Mestiere</b>
+        <small>@mest.fiore · Jatinangor</small>
+      </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Navigasi utama">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          aria-current={path === link.href ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <a class="button button-small nav-cta" href="/rangkai/">
+      Mulai pesan <span aria-hidden="true">→</span>
+    </a>
+
+    <details class="mobile-nav" id="mobile-menu-details">
+      <summary aria-label="Buka navigasi" aria-haspopup="true">
+        Menu
+      </summary>
+      <nav aria-label="Navigasi seluler">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={path === link.href ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a href="/rangkai/">Mulai pesan →</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  // Apple-grade mobile menu UX: auto close on outside click, escape key, or link click
+  function setupMobileNav() {
+    const details = document.getElementById('mobile-menu-details') as HTMLDetailsElement | null;
+    if (!details) return;
+
+    // Close when clicking outside
+    document.addEventListener('click', (event) => {
+      if (details.open && !details.contains(event.target as Node)) {
+        details.open = false;
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && details.open) {
+        details.open = false;
+      }
+    });
+
+    // Close on navigation link click
+    const navLinks = details.querySelectorAll('nav a');
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        details.open = false;
+      });
+    });
+  }
+
+  setupMobileNav();
+  document.addEventListener('astro:page-load', setupMobileNav);
+</script>

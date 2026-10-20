@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="46" fill="#FAF3FC" stroke="#F27EB2" stroke-width="4"/>
+  <text x="50" y="58" font-family="'Sacramento', cursive, serif" font-size="38" text-anchor="middle" fill="#F27EB2">M</text>
+  <circle cx="50" cy="50" r="40" fill="none" stroke="#E5D0F6" stroke-width="2" stroke-dasharray="3 3"/>
+</svg>
