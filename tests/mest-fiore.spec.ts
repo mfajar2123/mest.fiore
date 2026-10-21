@@ -191,4 +191,28 @@ test.describe('Mestiere Fiolet multi-page experience', () => {
     await page.keyboard.press('Escape');
     await expect(modal).not.toBeVisible();
   });
+
+  test('mobile responsive menu opens and navigates via Mulai Pesan link correctly', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
+    await page.goto('/');
+
+    const mobileMenu = page.locator('#mobile-menu-details');
+    const menuSummary = mobileMenu.locator('summary');
+    await expect(menuSummary).toBeVisible();
+
+    // Open mobile menu
+    await menuSummary.click();
+    await expect(mobileMenu).toHaveAttribute('open', '');
+
+    // Verify "Mulai pesan" link has correct target and navigate
+    const mulaiPesanLink = mobileMenu.locator('nav a', { hasText: 'Mulai pesan' });
+    await expect(mulaiPesanLink).toBeVisible();
+    await expect(mulaiPesanLink).toHaveAttribute('href', /\/rangkai\/?$/);
+
+    await Promise.all([
+      page.waitForURL(/\/rangkai\/?$/),
+      mulaiPesanLink.click(),
+    ]);
+    await expect(page.locator('main')).toBeVisible();
+  });
 });

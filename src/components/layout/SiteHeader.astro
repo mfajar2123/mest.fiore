@@ -48,7 +48,12 @@ const links = [
             {link.label}
           </a>
         ))}
-        <a href="/rangkai/">Mulai pesan →</a>
+        <a
+          href={withBase('/rangkai/')}
+          aria-current={path.endsWith('/rangkai/') ? 'page' : undefined}
+        >
+          Mulai pesan <span aria-hidden="true">→</span>
+        </a>
       </nav>
     </details>
   </div>

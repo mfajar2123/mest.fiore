@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { PipeCleanerArt } from '@/components/art/PipeCleanerArt';
+import { withBase } from '@/lib/paths';
 ---
 
 <BaseLayout
@@ -18,10 +19,10 @@ import { PipeCleanerArt } from '@/components/art/PipeCleanerArt';
           Mungkin tautannya berubah atau salah ketik. Kamu bisa lanjut melihat katalog buket, gantungan gemas, atau langsung mulai merangkai pesanan.
         </p>
         <div class="hero-actions mt-8">
-          <a class="button" href="/buket/">
+          <a class="button" href={withBase('/buket/')}>
             Lihat katalog buket <span aria-hidden="true">→</span>
           </a>
-          <a class="button button-secondary" href="/">
+          <a class="button button-secondary" href={withBase('/')}>
             Kembali ke beranda
           </a>
         </div>
