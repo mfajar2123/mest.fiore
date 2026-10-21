@@ -1,8 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { BUCKET_LIST, GANTUNGAN_LIST } from '@/data/mestFioreData';
-import { BucketStorySection } from '@/components/sections/BucketStorySection';
-import { KeychainAtelierSection } from '@/components/sections/KeychainAtelierSection';
 import { withBase } from '@/lib/paths';
 ---
 
@@ -114,10 +112,6 @@ import { withBase } from '@/lib/paths';
       </div>
     </div>
   </section>
-
-  <!-- Section 3: Interactive Product Showcase -->
-  <BucketStorySection client:load />
-  <KeychainAtelierSection client:load />
 
   <!-- Section 4: Custom Request Callout -->
   <section class="home-section" aria-labelledby="section-callout-title">

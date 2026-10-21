@@ -162,7 +162,7 @@ test.describe('Mestiere Fiolet multi-page experience', () => {
   });
 
   test('real bouquet gallery displays authentic photos, filters, and lightbox modal', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/buket/');
     
     // Check gallery is rendered
     const gallerySection = page.locator('.gallery-section');
