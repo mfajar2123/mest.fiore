@@ -62,7 +62,22 @@ export function ProductCatalog({ items, heading, intro, actionLabel }: Props) {
               value={item.id}
             >
               <div className="product-art" aria-hidden="true">
-                <PipeCleanerArt id={item.id} size={280} />
+                {item.image ? (
+                  <div className="relative w-full max-w-[320px] aspect-square rounded-2xl overflow-hidden border border-purple-100 bg-white/70 shadow-sm group">
+                    <img
+                      src={item.image}
+                      alt={`Foto asli ${item.name}`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="eager"
+                    />
+                    <span className="absolute bottom-2.5 left-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-sm text-[11px] font-bold text-purple-900 border border-purple-200/60 shadow-xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      Foto Asli @mest.fiore
+                    </span>
+                  </div>
+                ) : (
+                  <PipeCleanerArt id={item.id} size={280} />
+                )}
               </div>
               <div>
                 {item.badge && (
@@ -99,7 +114,21 @@ export function ProductCatalog({ items, heading, intro, actionLabel }: Props) {
           {items.map((item) => (
             <div key={item.id} className="catalog-card">
               <div className="catalog-card-art" aria-hidden="true">
-                <PipeCleanerArt id={item.id} size={150} />
+                {item.image ? (
+                  <div className="relative w-full h-full overflow-hidden rounded-lg group">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <span className="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded bg-black/60 backdrop-blur-xs text-white text-[10px] font-medium">
+                      Foto Asli
+                    </span>
+                  </div>
+                ) : (
+                  <PipeCleanerArt id={item.id} size={150} />
+                )}
               </div>
               <div className="catalog-card-body">
                 <span className="product-price">{item.priceDisplay}</span>

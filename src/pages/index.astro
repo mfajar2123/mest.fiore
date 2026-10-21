@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { PipeCleanerArt } from '@/components/art/PipeCleanerArt';
 import { BUCKET_LIST, GANTUNGAN_LIST } from '@/data/mestFioreData';
+import { RealBouquetGallery } from '@/components/gallery/RealBouquetGallery';
+import MestLogo from '@/components/brand/MestLogo.astro';
 ---
 
 <BaseLayout>
@@ -23,6 +24,10 @@ import { BUCKET_LIST, GANTUNGAN_LIST } from '@/data/mestFioreData';
   <section class="hero" aria-labelledby="hero-title">
     <div class="shell hero-grid">
       <div class="hero-copy">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-purple-200/80 shadow-xs mb-3 text-xs font-semibold text-purple-900 w-fit">
+          <MestLogo size="sm" className="w-5 h-5" />
+          <span>Handmade di Jatinangor · Free Custom Design</span>
+        </div>
         <h1 id="hero-title">Hadiah kecil, dibikin lebih personal.</h1>
         <p>
           Buket kawat bulu dan charm handmade untuk sempro, wisuda, ulang tahun, atau sekadar bilang “aku inget kamu”. Pilih yang kamu suka, sisanya kita bantu rangkai.
@@ -37,8 +42,26 @@ import { BUCKET_LIST, GANTUNGAN_LIST } from '@/data/mestFioreData';
         </div>
       </div>
 
-      <div class="hero-art" aria-label="Ilustrasi buket bunga kawat bulu Mestiere Fiolet">
-        <PipeCleanerArt id="bucket-flower" size={320} />
+      <div class="hero-art relative flex items-center justify-center" aria-label="Foto asli buket bunga kawat bulu Mestiere Fiolet">
+        <div class="relative w-full max-w-[340px] aspect-square rounded-3xl overflow-hidden border-2 border-purple-200/80 bg-white/80 shadow-lg p-2.5 group">
+          <img
+            src="/images/bouquets/flower-pastel-iridescent.jpg"
+            alt="Foto asli buket bunga kawat bulu iridescent Mestiere Fiolet"
+            class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"
+            loading="eager"
+            width="340"
+            height="340"
+          />
+          <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-purple-200/70 shadow-sm text-xs">
+            <div class="flex items-center gap-1.5 font-bold text-purple-950">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>100% Foto Asli Buket</span>
+            </div>
+            <span class="font-mono font-bold text-pink-600 bg-pink-50 px-2 py-0.5 rounded border border-pink-100">
+              Mulai 10K
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -104,7 +127,10 @@ import { BUCKET_LIST, GANTUNGAN_LIST } from '@/data/mestFioreData';
     </div>
   </section>
 
-  <!-- Section 3: Custom Request Callout -->
+  <!-- Section 3: Real Bouquet Portfolio Gallery -->
+  <RealBouquetGallery client:load />
+
+  <!-- Section 4: Custom Request Callout -->
   <section class="home-section" aria-labelledby="section-callout-title">
     <div class="shell">
       <div class="callout">

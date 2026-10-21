@@ -3,76 +3,40 @@ interface Props {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   showCircle?: boolean;
   className?: string;
+  alt?: string;
 }
 
-const { size = 'md', showCircle = true, className = '' } = Astro.props;
+const {
+  size = 'md',
+  className = '',
+  alt = 'Logo Mestiere Fiolet @mest.fiore Jatinangor',
+} = Astro.props;
 
-const dimensions = {
-  sm: { width: 120, height: 120, viewBox: "0 0 160 160" },
-  md: { width: 180, height: 180, viewBox: "0 0 160 160" },
-  lg: { width: 240, height: 240, viewBox: "0 0 160 160" },
-  xl: { width: 320, height: 320, viewBox: "0 0 160 160" },
+const sizeStyles = {
+  sm: 'w-10 h-10',
+  md: 'w-20 h-20',
+  lg: 'w-28 h-28',
+  xl: 'w-36 h-36',
+}[size];
+
+const pixelDimensions = {
+  sm: 44,
+  md: 80,
+  lg: 112,
+  xl: 144,
 }[size];
 ---
 
-<div class={`relative inline-flex items-center justify-center mest-logo-container ${className}`}>
-  <svg
-    width={dimensions.width}
-    height={dimensions.height}
-    viewBox={dimensions.viewBox}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="mest-logo-svg transition-transform duration-300 hover:scale-105"
-  >
-    {showCircle && (
-      <g>
-        <circle
-          cx="80"
-          cy="80"
-          r="74"
-          fill="#FAF3FC"
-          stroke="#E5DAEC"
-          stroke-width="2"
-        />
-        <circle
-          cx="80"
-          cy="80"
-          r="68"
-          stroke="#F27EB2"
-          stroke-opacity="0.25"
-          stroke-width="1"
-          stroke-dasharray="2 3"
-        />
-      </g>
-    )}
-
-    <!-- "Mest" Hand-Lettered Script in Flamingo Rose Pink -->
-    <text
-      x="80"
-      y="84"
-      text-anchor="middle"
-      font-family="'Sacramento', cursive"
-      font-size="60"
-      font-weight="400"
-      fill="#F27EB2"
-      class="select-none tracking-normal"
-    >
-      Mest
-    </text>
-
-    <!-- "F I O L E T" Spaced Sans-Serif in Deep Muted Plum Charcoal -->
-    <text
-      x="80"
-      y="108"
-      text-anchor="middle"
-      font-family="'Plus Jakarta Sans', sans-serif"
-      font-size="11.5"
-      font-weight="600"
-      letter-spacing="0.38em"
-      fill="#3B2342"
-      class="select-none uppercase tracking-[0.38em]"
-    >
-      F I O L E T
-    </text>
-  </svg>
+<div class={`mest-logo-container relative inline-flex items-center justify-center shrink-0 ${sizeStyles} ${className}`}>
+  <div class="relative w-full h-full rounded-full overflow-hidden border border-[#E5DAEC] bg-white ring-2 ring-[#FAD9EC]/80 shadow-sm transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+    <img
+      src="/images/logo.jpg"
+      alt={alt}
+      width={pixelDimensions}
+      height={pixelDimensions}
+      loading="eager"
+      decoding="async"
+      class="w-full h-full object-cover select-none"
+    />
+  </div>
 </div>

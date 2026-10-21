@@ -59,7 +59,16 @@ function Picker({
                 className="w-12 h-12 rounded-xl bg-purple-50/80 flex items-center justify-center shrink-0 border border-purple-100 overflow-hidden"
                 aria-hidden="true"
               >
-                <PipeCleanerArt id={item.id} size={38} />
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <PipeCleanerArt id={item.id} size={38} />
+                )}
               </div>
               <div>
                 <strong>{item.name}</strong>

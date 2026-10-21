@@ -1279,6 +1279,33 @@ p {
   }
 }
 
+/* Real Portfolio Gallery Section */
+.gallery-section {
+  padding: 64px 0;
+  background: linear-gradient(180deg, rgba(250, 243, 252, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
+  border-top: 1px solid var(--line-subtle);
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.gallery-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery-card:hover {
+  border-color: var(--plum);
+  transform: translateY(-3px);
+}
+
+.gallery-filters button {
+  touch-action: manipulation;
+}
+
+@media (max-width: 640px) {
+  .gallery-section {
+    padding: 44px 0;
+  }
+}
+
 /* Reduced Motion Safety */
 @media (prefers-reduced-motion: reduce) {
   html {

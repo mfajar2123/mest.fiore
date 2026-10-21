@@ -150,4 +150,45 @@ test.describe('Mestiere Fiolet multi-page experience', () => {
     await firstFaqSummary.click();
     await expect(firstFaqDetails).toHaveAttribute('open', '');
   });
+
+  test('official brand logo renders properly in header and footer', async ({ page }) => {
+    await page.goto('/');
+    const headerLogo = page.locator('header .brand-mark img[src*="logo.jpg"]');
+    await expect(headerLogo).toBeVisible();
+    await expect(headerLogo).toHaveAttribute('alt', /Logo Mestiere Fiolet/i);
+
+    const footerLogo = page.locator('footer .footer-brand img[src*="logo.jpg"]');
+    await expect(footerLogo).toBeVisible();
+  });
+
+  test('real bouquet gallery displays authentic photos, filters, and lightbox modal', async ({ page }) => {
+    await page.goto('/');
+    
+    // Check gallery is rendered
+    const gallerySection = page.locator('.gallery-section');
+    await expect(gallerySection).toBeVisible();
+    await expect(gallerySection.getByRole('heading', { name: /Koleksi Buket Nyata/i })).toBeVisible();
+
+    // Verify cards are rendered
+    const cards = gallerySection.locator('.gallery-card');
+    await expect(cards).toHaveCount(11);
+
+    // Filter to Idol & Wisuda
+    await page.getByRole('tab', { name: /Idol & Wisuda/i }).click();
+    await expect(gallerySection.getByText('K-Pop Bias Photocard Bucket')).toBeVisible();
+    await expect(gallerySection.getByText('Graduation Teddy Bear & Snack Bucket')).toBeVisible();
+
+    // Open lightbox zoom modal
+    const zoomButton = gallerySection.locator('button[aria-label*="Perbesar foto"]').first();
+    await zoomButton.click();
+    
+    const modal = page.locator('div[role="dialog"]');
+    await expect(modal).toBeVisible();
+    await expect(modal.locator('img')).toBeVisible();
+    await expect(modal.getByRole('link', { name: /Chat WhatsApp Admin/i })).toBeVisible();
+
+    // Close modal via Escape key
+    await page.keyboard.press('Escape');
+    await expect(modal).not.toBeVisible();
+  });
 });

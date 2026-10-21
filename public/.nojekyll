@@ -1,0 +1,1 @@
+# This file tells GitHub Pages not to run Jekyll, allowing folders starting with underscore like _astro to be served properly.
