@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { BUCKET_LIST, GANTUNGAN_LIST } from '@/data/mestFioreData';
-import { RealBouquetGallery } from '@/components/gallery/RealBouquetGallery';
-import MestLogo from '@/components/brand/MestLogo.astro';
+import { BucketStorySection } from '@/components/sections/BucketStorySection';
+import { KeychainAtelierSection } from '@/components/sections/KeychainAtelierSection';
 import { withBase } from '@/lib/paths';
 ---
 
@@ -25,10 +25,6 @@ import { withBase } from '@/lib/paths';
   <section class="hero" aria-labelledby="hero-title">
     <div class="shell hero-grid">
       <div class="hero-copy">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-purple-200/80 shadow-xs mb-3 text-xs font-semibold text-purple-900 w-fit">
-          <MestLogo size="sm" className="w-5 h-5" />
-          <span>Handmade di Jatinangor · Free Custom Design</span>
-        </div>
         <h1 id="hero-title">Hadiah kecil, dibikin lebih personal.</h1>
         <p>
           Buket kawat bulu dan charm handmade untuk sempro, wisuda, ulang tahun, atau sekadar bilang “aku inget kamu”. Pilih yang kamu suka, sisanya kita bantu rangkai.
@@ -90,7 +86,7 @@ import { withBase } from '@/lib/paths';
       <div>
         <h2 id="section-paths-title">Pilih jalur yang paling kamu butuhkan.</h2>
         <p class="muted intro-muted">
-          Tidak perlu scroll panjang untuk cari informasi penting. Masuk ke kategori, lihat harga, lalu lanjut chat saat sudah cocok.
+          Tidak perlu scroll panjang untuk cari informasi penting. Masuk ke kategori dan lihat harga.
         </p>
       </div>
       <div class="home-steps">
@@ -119,8 +115,9 @@ import { withBase } from '@/lib/paths';
     </div>
   </section>
 
-  <!-- Section 3: Real Bouquet Portfolio Gallery -->
-  <RealBouquetGallery client:load />
+  <!-- Section 3: Interactive Product Showcase -->
+  <BucketStorySection client:load />
+  <KeychainAtelierSection client:load />
 
   <!-- Section 4: Custom Request Callout -->
   <section class="home-section" aria-labelledby="section-callout-title">

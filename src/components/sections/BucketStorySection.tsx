@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BUCKET_LIST } from '@/data/mestFioreData';
 import { PipeCleanerArt } from '@/components/art/PipeCleanerArt';
+import { withBase } from '@/lib/paths';
 
 export const BucketStorySection: React.FC = () => {
   const [selectedBucket, setSelectedBucket] = useState<string>('bucket-single');
@@ -73,7 +74,7 @@ export const BucketStorySection: React.FC = () => {
 
             <div className="pt-4">
               <a
-                href="#custom-builder"
+                href={withBase('/rangkai/')}
                 className="inline-flex items-center gap-2 text-sm font-bold text-[#7B1FA2] hover:text-[#F27EB2] transition-colors group"
               >
                 <span>Pilih paket ini & atur kustomisasi warna di WhatsApp</span>

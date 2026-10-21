@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { GANTUNGAN_LIST } from '@/data/mestFioreData';
 import { PipeCleanerArt } from '@/components/art/PipeCleanerArt';
+import { withBase } from '@/lib/paths';
 
 export const KeychainAtelierSection: React.FC = () => {
   const [activeKeychain, setActiveKeychain] = useState<string>('gantungan-coquette');
@@ -96,7 +97,7 @@ export const KeychainAtelierSection: React.FC = () => {
 
             <div className="pt-4 flex justify-end">
               <a
-                href="#custom-builder"
+                href={withBase('/rangkai/')}
                 className="inline-flex items-center gap-2 rounded-full bg-[#F27EB2] px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-[#e0669c] transition-all hover:scale-105"
               >
                 <span>Pesan Gantungan Custom Sekarang</span>
