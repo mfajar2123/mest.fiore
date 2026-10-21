@@ -1,17 +1,18 @@
 ---
 import MestLogo from '@/components/brand/MestLogo.astro';
+import { withBase } from '@/lib/paths';
 const path = Astro.url.pathname;
 const links = [
-  { href: '/buket/', label: 'Buket' },
-  { href: '/gantungan/', label: 'Gantungan' },
-  { href: '/rangkai/', label: 'Rangkai' },
-  { href: '/info/', label: 'Info' },
+  { href: withBase('/buket/'), path: '/buket/', label: 'Buket' },
+  { href: withBase('/gantungan/'), path: '/gantungan/', label: 'Gantungan' },
+  { href: withBase('/rangkai/'), path: '/rangkai/', label: 'Rangkai' },
+  { href: withBase('/info/'), path: '/info/', label: 'Info' },
 ];
 ---
 
 <header class="site-header">
   <div class="shell nav-shell">
-    <a class="brand-lockup" href="/" aria-label="Mestiere Fiolet, beranda">
+    <a class="brand-lockup" href={withBase('/')} aria-label="Mestiere Fiolet, beranda">
       <MestLogo size="sm" showCircle={true} className="brand-mark" />
       <span>
         <b>Mestiere</b>
@@ -23,14 +24,14 @@ const links = [
       {links.map((link) => (
         <a
           href={link.href}
-          aria-current={path === link.href ? 'page' : undefined}
+          aria-current={path.endsWith(link.path) ? 'page' : undefined}
         >
           {link.label}
         </a>
       ))}
     </nav>
 
-    <a class="button button-small nav-cta" href="/rangkai/">
+    <a class="button button-small nav-cta" href={withBase('/rangkai/')}>
       Mulai pesan <span aria-hidden="true">→</span>
     </a>
 
@@ -42,7 +43,7 @@ const links = [
         {links.map((link) => (
           <a
             href={link.href}
-            aria-current={path === link.href ? 'page' : undefined}
+            aria-current={path.endsWith(link.path) ? 'page' : undefined}
           >
             {link.label}
           </a>

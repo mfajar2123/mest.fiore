@@ -1,13 +1,14 @@
 ---
 import { BRAND_INFO } from '@/data/mestFioreData';
 import MestLogo from '@/components/brand/MestLogo.astro';
+import { withBase } from '@/lib/paths';
 ---
 
 <footer class="site-footer" aria-labelledby="footer-heading">
   <h2 id="footer-heading" class="sr-only">Informasi Mestiere Fiolet</h2>
   <div class="shell footer-grid">
     <div>
-      <a class="footer-brand inline-flex items-center gap-3" href="/" aria-label="Mestiere Fiolet, beranda">
+      <a class="footer-brand inline-flex items-center gap-3" href={withBase('/')} aria-label="Mestiere Fiolet, beranda">
         <MestLogo size="sm" className="w-9 h-9" />
         <span>Mest <span>Fiolet</span></span>
       </a>
@@ -34,7 +35,7 @@ import MestLogo from '@/components/brand/MestLogo.astro';
     <div>
       <p class="footer-label">Siap pesan?</p>
       <p class="text-sm text-muted mb-3">Susun estimasi budget dan langsung chat admin.</p>
-      <a class="button button-small" href="/rangkai/">
+      <a class="button button-small" href={withBase('/rangkai/')}>
         Rangkai pesanan <span aria-hidden="true">→</span>
       </a>
     </div>
@@ -43,7 +44,7 @@ import MestLogo from '@/components/brand/MestLogo.astro';
   <div class="shell footer-bottom">
     <span>© {new Date().getFullYear()} Mestiere Fiolet · Jatinangor, Sumedang. All rights reserved.</span>
     <div class="flex items-center gap-5">
-      <a href="/info/#privasi" class="hover:text-plum transition-colors">Privasi pesanan</a>
+      <a href={`${withBase('/info/')}#privasi`} class="hover:text-plum transition-colors">Privasi pesanan</a>
       <a href={`https://wa.me/${BRAND_INFO.whatsappNumber}`} target="_blank" rel="noopener noreferrer" class="hover:text-plum transition-colors">
         WhatsApp Admin
       </a>

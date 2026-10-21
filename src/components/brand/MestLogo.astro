@@ -1,4 +1,6 @@
 ---
+import { withBase } from '@/lib/paths';
+
 interface Props {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   showCircle?: boolean;
@@ -30,7 +32,7 @@ const pixelDimensions = {
 <div class={`mest-logo-container relative inline-flex items-center justify-center shrink-0 ${sizeStyles} ${className}`}>
   <div class="relative w-full h-full rounded-full overflow-hidden border border-[#E5DAEC] bg-white ring-2 ring-[#FAD9EC]/80 shadow-sm transition-transform duration-300 hover:scale-105 flex items-center justify-center">
     <img
-      src="/images/logo.jpg"
+      src={withBase('/images/logo.jpg')}
       alt={alt}
       width={pixelDimensions}
       height={pixelDimensions}

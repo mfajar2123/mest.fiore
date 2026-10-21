@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Copy, Check, MessageCircle, RotateCcw } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { withBase } from '@/lib/paths';
 
 type Tab = 'stems' | 'bucket' | 'keychain';
 type Quantities = Record<string, number>;
@@ -61,7 +62,7 @@ function Picker({
               >
                 {item.image ? (
                   <img
-                    src={item.image}
+                    src={withBase(item.image)}
                     alt={item.name}
                     className="w-full h-full object-cover"
                     loading="lazy"

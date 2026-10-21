@@ -4,6 +4,7 @@ import type { ProductItem } from '@/data/mestFioreData';
 import { PipeCleanerArt } from '@/components/art/PipeCleanerArt';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { withBase } from '@/lib/paths';
 
 interface Props {
   items: ProductItem[];
@@ -26,6 +27,12 @@ export function ProductCatalog({ items, heading, intro, actionLabel }: Props) {
     }
   };
 
+  const moveSelection = (direction: 1 | -1) => {
+    const currentIndex = items.findIndex((item) => item.id === selectedId);
+    const nextIndex = (currentIndex + direction + items.length) % items.length;
+    setSelectedId(items[nextIndex].id);
+  };
+
   return (
     <section className="catalog-shell" aria-labelledby="catalog-heading">
       <div className="catalog-intro">
@@ -41,7 +48,14 @@ export function ProductCatalog({ items, heading, intro, actionLabel }: Props) {
         activationMode="automatic"
         className="catalog-layout"
       >
-        <TabsList className="catalog-list" aria-label={`Pilihan ${heading}`}>
+        <TabsList
+          className="catalog-list"
+          aria-label={`Pilihan ${heading}`}
+          onKeyDown={(event) => {
+            if (event.key === 'ArrowDown') moveSelection(1);
+            if (event.key === 'ArrowUp') moveSelection(-1);
+          }}
+        >
           {items.map((item) => (
             <TabsTrigger
               className="catalog-item"
@@ -65,15 +79,11 @@ export function ProductCatalog({ items, heading, intro, actionLabel }: Props) {
                 {item.image ? (
                   <div className="relative w-full max-w-[320px] aspect-square rounded-2xl overflow-hidden border border-purple-100 bg-white/70 shadow-sm group">
                     <img
-                      src={item.image}
+                      src={withBase(item.image)}
                       alt={`Foto asli ${item.name}`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="eager"
                     />
-                    <span className="absolute bottom-2.5 left-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-sm text-[11px] font-bold text-purple-900 border border-purple-200/60 shadow-xs">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      Foto Asli @mest.fiore
-                    </span>
                   </div>
                 ) : (
                   <PipeCleanerArt id={item.id} size={280} />
@@ -94,7 +104,7 @@ export function ProductCatalog({ items, heading, intro, actionLabel }: Props) {
                   className="text-link strong-link"
                 >
                   <a
-                    href="/rangkai/"
+                    href={withBase('/rangkai/')}
                     onClick={() => handleSelectProduct(item)}
                   >
                     {actionLabel}{' '}
@@ -117,14 +127,11 @@ export function ProductCatalog({ items, heading, intro, actionLabel }: Props) {
                 {item.image ? (
                   <div className="relative w-full h-full overflow-hidden rounded-lg group">
                     <img
-                      src={item.image}
+                      src={withBase(item.image)}
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
-                    <span className="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded bg-black/60 backdrop-blur-xs text-white text-[10px] font-medium">
-                      Foto Asli
-                    </span>
                   </div>
                 ) : (
                   <PipeCleanerArt id={item.id} size={150} />
@@ -136,7 +143,7 @@ export function ProductCatalog({ items, heading, intro, actionLabel }: Props) {
                 <p>{item.description}</p>
                 <div className="catalog-card-footer">
                   <a
-                    href="/rangkai/"
+                    href={withBase('/rangkai/')}
                     className="button button-small w-full text-center"
                     onClick={() => handleSelectProduct(item)}
                   >

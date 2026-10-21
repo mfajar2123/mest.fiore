@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { BUCKET_LIST, GANTUNGAN_LIST } from '@/data/mestFioreData';
 import { RealBouquetGallery } from '@/components/gallery/RealBouquetGallery';
 import MestLogo from '@/components/brand/MestLogo.astro';
+import { withBase } from '@/lib/paths';
 ---
 
 <BaseLayout>
@@ -33,10 +34,10 @@ import MestLogo from '@/components/brand/MestLogo.astro';
           Buket kawat bulu dan charm handmade untuk sempro, wisuda, ulang tahun, atau sekadar bilang “aku inget kamu”. Pilih yang kamu suka, sisanya kita bantu rangkai.
         </p>
         <div class="hero-actions">
-          <a class="button" href="/rangkai/">
+          <a class="button" href={withBase('/rangkai/')}>
             Rangkai pesanan <span aria-hidden="true">→</span>
           </a>
-          <a class="button button-secondary" href="/buket/">
+          <a class="button button-secondary" href={withBase('/buket/')}>
             Lihat buket
           </a>
         </div>
@@ -45,22 +46,13 @@ import MestLogo from '@/components/brand/MestLogo.astro';
       <div class="hero-art relative flex items-center justify-center" aria-label="Foto asli buket bunga kawat bulu Mestiere Fiolet">
         <div class="relative w-full max-w-[340px] aspect-square rounded-3xl overflow-hidden border-2 border-purple-200/80 bg-white/80 shadow-lg p-2.5 group">
           <img
-            src="/images/bouquets/flower-pastel-iridescent.jpg"
+            src={withBase('/images/bouquets/flower-pastel-iridescent.jpg')}
             alt="Foto asli buket bunga kawat bulu iridescent Mestiere Fiolet"
             class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"
             loading="eager"
             width="340"
             height="340"
           />
-          <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-purple-200/70 shadow-sm text-xs">
-            <div class="flex items-center gap-1.5 font-bold text-purple-950">
-              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>100% Foto Asli Buket</span>
-            </div>
-            <span class="font-mono font-bold text-pink-600 bg-pink-50 px-2 py-0.5 rounded border border-pink-100">
-              Mulai 10K
-            </span>
-          </div>
         </div>
       </div>
     </div>
@@ -105,21 +97,21 @@ import MestLogo from '@/components/brand/MestLogo.astro';
         <div class="home-step">
           <h3>Buket untuk momen spesial</h3>
           <p>{BUCKET_LIST.length} paket pilihan yang bisa disesuaikan warna dan detailnya.</p>
-          <a class="text-link" href="/buket/">
+          <a class="text-link" href={withBase('/buket/')}>
             Pilih buket <span aria-hidden="true">→</span>
           </a>
         </div>
         <div class="home-step">
           <h3>Charm untuk bawa ke mana-mana</h3>
           <p>{GANTUNGAN_LIST.length} model gantungan lucu yang playful dan tetap rapi.</p>
-          <a class="text-link" href="/gantungan/">
+          <a class="text-link" href={withBase('/gantungan/')}>
             Lihat gantungan <span aria-hidden="true">→</span>
           </a>
         </div>
         <div class="home-step">
           <h3>Sudah punya ide?</h3>
           <p>Susun estimasi dan kirim detailnya ke admin dengan satu klik.</p>
-          <a class="text-link" href="/rangkai/">
+          <a class="text-link" href={withBase('/rangkai/')}>
             Mulai merangkai <span aria-hidden="true">→</span>
           </a>
         </div>
@@ -138,7 +130,7 @@ import MestLogo from '@/components/brand/MestLogo.astro';
         <p>
           Boleh banget. Tulis warna bunga, wrap, atau detail kecil yang kamu mau. Admin akan cek kemungkinan dan harga finalnya lewat WhatsApp.
         </p>
-        <a class="button" href="/rangkai/">
+        <a class="button" href={withBase('/rangkai/')}>
           Tulis request pesanan <span aria-hidden="true">→</span>
         </a>
       </div>

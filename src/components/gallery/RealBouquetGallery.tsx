@@ -1,6 +1,7 @@
 import { useState, useId, useEffect } from 'react';
-import { Camera, ZoomIn, X, MessageCircle, ArrowRight, Sparkles } from 'lucide-react';
+import { ZoomIn, X, MessageCircle, ArrowRight } from 'lucide-react';
 import { REAL_BOUQUET_SHOWCASE, BRAND_INFO, type BouquetShowcaseItem } from '@/data/mestFioreData';
+import { withBase } from '@/lib/paths';
 
 type FilterCategory = 'semua' | 'bunga' | 'idol-wisuda' | 'snack-uang';
 
@@ -47,10 +48,6 @@ export function RealBouquetGallery() {
     <section className="home-section gallery-section" aria-labelledby={titleId}>
       <div className="shell">
         <div className="gallery-header text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-900 text-xs font-bold mb-3 border border-purple-200">
-            <Camera className="w-3.5 h-3.5 text-pink-600" aria-hidden="true" />
-            <span>PORTFOLIO & FOTO ASLI @MEST.FIORE</span>
-          </div>
           <h2 id={titleId} className="font-serif text-3xl sm:text-4xl font-bold text-[#7B1FA2] mb-3">
             Koleksi Buket Nyata Buatan Tangan
           </h2>
@@ -125,26 +122,11 @@ export function RealBouquetGallery() {
               {/* Photo Area */}
               <div className="relative aspect-square overflow-hidden bg-purple-50/40">
                 <img
-                  src={item.image}
+                  src={withBase(item.image)}
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-
-                {/* Overlays / Badges */}
-                <div className="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
-                  {item.badge && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-sm text-[11px] font-bold text-purple-900 border border-purple-200/80 shadow-xs">
-                      <Sparkles className="w-3 h-3 text-pink-500" aria-hidden="true" />
-                      {item.badge}
-                    </span>
-                  )}
-                  {item.highlightTag && (
-                    <span className="inline-block px-2 py-0.5 rounded-md bg-[#7B1FA2]/90 text-white text-[10px] font-semibold">
-                      {item.highlightTag}
-                    </span>
-                  )}
-                </div>
 
                 {/* Quick Zoom Button */}
                 <button
@@ -189,7 +171,7 @@ export function RealBouquetGallery() {
                     <span>Pesan Model Ini</span>
                   </a>
                   <a
-                    href={`/rangkai/?item=${item.orderItemId || 'bucket-flower'}&cat=bucket`}
+                    href={`${withBase('/rangkai/')}?item=${item.orderItemId || 'bucket-flower'}&cat=bucket`}
                     className="min-h-[44px] px-4 py-2 inline-flex items-center justify-center gap-1 rounded-full bg-purple-50 hover:bg-purple-100 text-[#7B1FA2] text-xs font-bold transition-colors border border-purple-200"
                     aria-label={`Rangkai atau sesuaikan ${item.title}`}
                   >
@@ -240,7 +222,7 @@ export function RealBouquetGallery() {
             <div className="overflow-y-auto p-4 sm:p-6 flex flex-col items-center">
               <div className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-purple-50 shadow-inner border border-line">
                 <img
-                  src={activeModalItem.image}
+                  src={withBase(activeModalItem.image)}
                   alt={activeModalItem.title}
                   className="w-full h-full object-cover"
                 />
@@ -268,7 +250,7 @@ export function RealBouquetGallery() {
                     <span>Chat WhatsApp Admin untuk Pesan</span>
                   </a>
                   <a
-                    href={`/rangkai/?item=${activeModalItem.orderItemId || 'bucket-flower'}&cat=bucket`}
+                    href={`${withBase('/rangkai/')}?item=${activeModalItem.orderItemId || 'bucket-flower'}&cat=bucket`}
                     className="min-h-[44px] w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full bg-purple-100 hover:bg-purple-200 text-[#7B1FA2] text-sm font-bold px-6 py-3 transition-colors border border-purple-200"
                   >
                     <span>Buka di Order Studio</span>
